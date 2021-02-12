@@ -1,16 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cuentas;
 
 /**
+ * La clase CCuenta contiene los métodos correspontientes para poder operar con
+ * los valores establecidos del cliente
  *
+ * @version 1.0, 10/02/2021
  * @author Sergio Soriano
  */
 public class CCuenta {
-
 
     private String nombre;
     private String cuenta;
@@ -18,90 +15,126 @@ public class CCuenta {
     private double tipoInterés;
 
     /**
-     * @return the nombre
+     * Devuelve el nombre
+     * 
+     * @return El nombre
      */
     protected String getNombre() {
         return nombre;
     }
 
     /**
-     * @param nombre the nombre to set
+     * Asgina el nombre
+     * 
+     * @param nombre El nombre para asignar
      */
     protected void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
     /**
-     * @return the cuenta
+     * Devuelve el número de cuenta en formato string
+     * 
+     * @return La cuenta
      */
     protected String getCuenta() {
         return cuenta;
     }
 
     /**
-     * @param cuenta the cuenta to set
+     * Asigna una cuenta
+     * 
+     * @param cuenta La cuenta para signar
      */
     protected void setCuenta(String cuenta) {
         this.cuenta = cuenta;
     }
 
     /**
-     * @return the saldo
+     * Método para devolver el saldo
+     *
+     * @return El saldo
      */
     protected double getSaldo() {
         return saldo;
     }
 
     /**
-     * @param saldo the saldo to set
+     * Método para asginar el saldo
+     *
+     * @param saldo El saldo para asignar
      */
     protected void setSaldo(double saldo) {
         this.saldo = saldo;
     }
 
     /**
-     * @return the tipoInterés
+     * Método para devolver el tipo de interes
+     *
+     * @return El tipo de interés
      */
     protected double getTipoInterés() {
         return tipoInterés;
     }
 
     /**
-     * @param tipoInterés the tipoInterés to set
+     * Metodo para asinar el tipo de interés
+     *
+     * @param tipoInterés El tipo de interes para asignar
      */
     protected void setTipoInterés(double tipoInterés) {
         this.tipoInterés = tipoInterés;
     }
 
-    public CCuenta()
-    {
+    /**
+     * Asigna los valores de nombre cuenta y saldo
+     *
+     * @param nom Nombre
+     * @param cue Cuenta
+     * @param sal Saldo
+     * @param tipo Tipo de interés
+     */
+    public CCuenta(String nom, String cue, double sal, double tipo) {
+        nombre = nom;
+        cuenta = cue;
+        saldo = sal;
     }
 
-    public CCuenta(String nom, String cue, double sal, double tipo)
-    {
-        nombre =nom;
-        cuenta=cue;
-        saldo=sal;
-    }
-
-    public double estado()
-    {
+    /**
+     * Método para devolver el saldo
+     *
+     * @return El saldo
+     */
+    public double estado() {
         return getSaldo();
     }
 
-    public void ingresar(double cantidad) throws Exception
-    {
-        if (cantidad<0)
+    /**
+     * Metodo para ingresar una cantidad en la cuenta
+     *
+     * @param cantidad La cantidad a ingresar
+     * @throws Exception Si no hay saldo o si la cantidad a ingresar es negativa
+     */
+    public void ingresar(double cantidad) throws Exception {
+        if (cantidad < 0) {
             throw new Exception("No se puede ingresar una cantidad negativa");
+        }
         setSaldo(getSaldo() + cantidad);
     }
 
-    public void retirar(double cantidad) throws Exception
-    {
-        if (cantidad <= 0)
-            throw new Exception ("No se puede retirar una cantidad negativa");
-        if (estado()< cantidad)
-            throw new Exception ("No se hay suficiente saldo");
+    /**
+     * Método para retirar una cantidad la cuenta
+     * 
+     * @param cantidad La cantidad que deseamos retirar
+     * @throws Exception Si no hay saldo o si la cantidad a ingresar es negativa
+     */
+    public void retirar(double cantidad) throws Exception {
+        if (cantidad <= 0) {
+            throw new Exception("No se puede retirar una cantidad negativa");
+        }
+        if (estado() < cantidad) {
+            throw new Exception("No se hay suficiente saldo");
+        }
         setSaldo(getSaldo() - cantidad);
     }
 }
