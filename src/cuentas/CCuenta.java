@@ -3,7 +3,7 @@ package cuentas;
 /**
  * La clase CCuenta contiene los métodos correspontientes para poder operar con
  * los valores establecidos del cliente
- *
+ * añado comentario en rama develop
  * @version 1.0, 10/02/2021
  * @author Sergio Soriano
  */
